@@ -6,4 +6,9 @@
             <class name="com.atqc.UserTest"/>
         </classes>
     </test>
+    <test name="Pet">
+        <classes>
+            <class name="com.atqc.PetTest"/>
+        </classes>
+    </test>
 </suite>

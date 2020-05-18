@@ -10,21 +10,21 @@ import static org.hamcrest.Matchers.*;
 public class PetTest extends RestAPIBaseTest {
 
     @Test
-    @Description("Create Pet with valid data")
+    @Description("Create Pet with info")
 
-    public void newValidPet() {
+    public void createNewValidPet() {
 
         given()
                 .contentType("application/json")
                 .baseUri("https://petstore.swagger.io/v2")
-                .header("Access-Token", "dfhdh=validtoken=gfsdfdfh")
+                .header("Access-Token", "1111222validtoken33344444")
                 .body("{\n" +
-                        "  \"id\": 0,\n" +
+                        "  \"id\": 1,\n" +
                         "  \"category\": {\n" +
-                        "    \"id\": 0,\n" +
-                        "    \"name\": \"string\"\n" +
+                        "    \"id\": 1,\n" +
+                        "    \"name\": \"dogs\"\n" +
                         "  },\n" +
-                        "  \"name\": \"doggie\",\n" +
+                        "  \"name\": \"Jack\",\n" +
                         "  \"photoUrls\": [\n" +
                         "    \"string\"\n" +
                         "  ],\n" +
@@ -41,11 +41,9 @@ public class PetTest extends RestAPIBaseTest {
                 .post("/pet")
 
                 .then()
-                .statusCode(200)
-                .body("code", is(200))
-                .body("type", is("doggie"))
-                .body("message", notNullValue());
-
-
-    }
+                       .statusCode(200)
+                       .body("name", is("Jack"))
+                       .body("status", is("available"))
+                       .body("id", notNullValue());
+                 }
 }
