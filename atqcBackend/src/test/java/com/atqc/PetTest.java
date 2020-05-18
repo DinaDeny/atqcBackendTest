@@ -161,7 +161,35 @@ public class PetTest extends RestAPIBaseTest {
 
      }
 
-     
+    @Test
+    @Description ("Delete pet by ID")
+    public void deletePetById(){
+        given()
+                .contentType("application/json")
+                .baseUri("https://petstore.swagger.io/v2")
+                .header("Access-Token", "1111222validtoken33344444")
+        .when()
+                .delete("/pet/1")
+        .then()
+                .statusCode(200)
+                .body("code", is(200))
+                .body("type", is("unknown"))
+                .body("message", equalTo(1));
+
+    }
+     @Test
+     @Description ("Delete pet that not found by ID")
+     public void deletePetThatNotFoundById(){
+         given()
+                 .contentType("application/json")
+                 .baseUri("https://petstore.swagger.io/v2")
+                 .header("Access-Token", "1111222validtoken33344444")
+         .when()
+                 .delete("/pet/25")
+         .then()
+                 .statusCode(404);
+     }
+
 
      @DataProvider(name = "Invalid statuses")
      private Object[] [] provider() {
